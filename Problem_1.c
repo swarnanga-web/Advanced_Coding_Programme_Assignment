@@ -9,8 +9,6 @@ int main() {
 scanf("%s", s);
 
     int n = strlen(s);
-
-    // Create circular string
     char t[2 * MAX];
     strcpy(t, s);
     strcat(t, s);
@@ -24,15 +22,12 @@ scanf("%s", s);
         freq[idx]++;
         current_sum += (idx + 1);
 
-        // Remove duplicates
         while (freq[idx] > 1) {
             int lidx = t[left] - 'a';
             freq[lidx]--;
             current_sum -= (lidx + 1);
             left++;
         }
-
-        // Ensure window length <= n
         while (right - left + 1 > n) {
             int lidx = t[left] - 'a';
             freq[lidx]--;
